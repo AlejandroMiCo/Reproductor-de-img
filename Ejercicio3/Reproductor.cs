@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Ejercicio3
 {
+    [DefaultProperty("Minutes")]
+    [DefaultEvent("DesbordaTiempo")]
     public partial class Reproductor : UserControl
     {
         public Reproductor()
@@ -19,6 +21,9 @@ namespace Ejercicio3
 
         bool isPlaying = false;
         private int minutos;
+
+        [Category("Properties")]
+        [Description("Obtiene o establece la propiedad minutos")]
         public int Minutos
         {
             get
@@ -39,6 +44,8 @@ namespace Ejercicio3
         }
 
         private int segundos;
+        [Category("Properties")]
+        [Description("Obtiene o establece la propiedad segundos")]
         public int Segundos
         {
             get
@@ -63,6 +70,9 @@ namespace Ejercicio3
             }
         }
 
+
+        [Category("Events")]
+        [Description("Se lanza cuando se hace click en el boton de Play")]
         public event EventHandler PlayClick;
 
         protected virtual void OnPlayClick(EventArgs e)
@@ -72,6 +82,8 @@ namespace Ejercicio3
             PlayClick?.Invoke(this, e);
         }
 
+        [Category("Events")]
+        [Description("Se lanza cuando el valor de la propiedad segundos supera el valor 59")]
         public event EventHandler DesbordaTiempo;
 
         protected virtual void OnDesbordaTiempo(EventArgs e)
